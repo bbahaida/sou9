@@ -6,39 +6,10 @@ import WelcomeScreen from "./app/screens/WelcomeScreen";
 import AppCard from "./app/components/AppCard";
 
 import colors from "./app/config/color";
+import ListingDetailsScreen from "./app/screens/ListingDetailsScreen";
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <View style={styles.card}>
-        <AppCard
-          image={require("./app/assets/jacket.jpg")}
-          title="Red Dead Redumption II"
-          subTitle="$100"
-        />
-      </View>
-
-      <View style={styles.place} />
-    </View>
-  );
+  return <ViewImageScreen />;
 }
 
-const styles = StyleSheet.create({
-  container: {
-    paddingTop: 30,
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#f8f4f4",
-  },
-  card: {
-    flex: 2,
-    marginBottom: 10,
-    width: "100%",
-  },
-  place: {
-    flex: 3,
-    backgroundColor: "#fff",
-    width: "100%",
-  },
-});
+const styles = StyleSheet.create({});
