@@ -1,23 +1,59 @@
 import React from "react";
-import { Image, StyleSheet, Text, View } from "react-native";
-
+import {
+  Image,
+  StyleSheet,
+  Text,
+  TouchableHighlight,
+  View,
+} from "react-native";
+import Swipeable from "react-native-gesture-handler/Swipeable";
 import colors from "./../config/color";
 
-const ListItem = ({ title, subTitle, image }) => {
+const Touchable = ({ title, subTitle, image, onPress, customStyles = {} }) => {
   return (
-    <View style={styles.container}>
-      <Image style={styles.image} source={image} />
-      <View style={styles.detailsContainer}>
-        <Text style={styles.title}>{title}</Text>
-        <Text style={styles.subTitle}>{subTitle}</Text>
+    <TouchableHighlight underlayColor={colors.light} onPress={onPress}>
+      <View style={[styles.container, { ...customStyles }]}>
+        <Image style={styles.image} source={image} />
+        <View style={styles.detailsContainer}>
+          <Text style={styles.title}>{title}</Text>
+          <Text style={styles.subTitle}>{subTitle}</Text>
+        </View>
       </View>
-    </View>
+    </TouchableHighlight>
   );
+};
+const ListItem = ({
+  title,
+  subTitle,
+  image,
+  onPress,
+  renderRightActions = undefined,
+  customStyles = {},
+}) => {
+  const touchable = (
+    <Touchable
+      title={title}
+      subTitle={subTitle}
+      image={image}
+      onPress={onPress}
+      customStyles={customStyles}
+    />
+  );
+  if (!!renderRightActions) {
+    return (
+      <Swipeable renderRightActions={renderRightActions}>{touchable}</Swipeable>
+    );
+  }
+  return touchable;
 };
 
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
+    padding: 15,
+    justifyContent: "flex-start",
+    alignItems: "center",
+    backgroundColor: "white",
   },
   image: {
     width: 70,
@@ -30,6 +66,8 @@ const styles = StyleSheet.create({
   },
   title: {
     fontWeight: "500",
+    fontSize: 18,
+    marginBottom: 4,
   },
   subTitle: {
     color: colors.medium,
