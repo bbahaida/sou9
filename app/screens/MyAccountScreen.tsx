@@ -7,40 +7,47 @@ import Screen from "../components/Screen";
 import color from "../config/color";
 
 interface Setting {
-  icon: string;
+  icon: {
+    name: string;
+    size?: number;
+    backgroungColor?: string;
+    iconColor?: string;
+  };
   id: number;
   title: string;
   customStyles: {};
-  iconConatinerStyle: {};
 }
 const settings: Setting[] = [
   {
     id: 1,
-    icon: "format-list-bulleted",
+    icon: {
+      name: "format-list-bulleted",
+      size: 40,
+      backgroungColor: color.primary,
+    },
     title: "My Listings",
     customStyles: {},
-    iconConatinerStyle: {
-      backgroundColor: color.primary,
-    },
   },
   {
     id: 2,
-    icon: "email",
+    icon: {
+      name: "email",
+      size: 40,
+      backgroungColor: color.secondary,
+    },
     title: "My Messages",
     customStyles: {},
-    iconConatinerStyle: {
-      backgroundColor: color.secondary,
-    },
   },
   {
     id: 3,
-    icon: "logout",
+    icon: {
+      name: "format-list-bulleted",
+      size: 40,
+      backgroungColor: "#ffe66d",
+    },
     title: "Log Out",
     customStyles: {
       marginTop: 30,
-    },
-    iconConatinerStyle: {
-      backgroundColor: "#ffe66d",
     },
   },
 ];
@@ -59,11 +66,17 @@ function MyAccountScreen(props) {
         data={settings}
         keyExtractor={(setting) => setting.id.toString()}
         renderItem={({ item }) => (
-          <Icon
+          <ListItem
             title={item.title}
-            icon={item.icon}
+            IconComponent={
+              <Icon
+                name={item.icon.name}
+                size={item.icon.size}
+                backgroundColor={item.icon.backgroungColor}
+                iconColor={item.icon.iconColor}
+              />
+            }
             customStyles={item.customStyles}
-            iconConatinerStyle={item.iconConatinerStyle}
           />
         )}
         ItemSeparatorComponent={ListItemSeparator}

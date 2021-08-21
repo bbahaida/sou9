@@ -9,14 +9,32 @@ import {
 import Swipeable from "react-native-gesture-handler/Swipeable";
 import colors from "./../config/color";
 
-const Touchable = ({ title, subTitle, image, onPress, customStyles = {} }) => {
+export interface ListItemProps {
+  title: string;
+  subTitle?: string;
+  image?: any;
+  onPress?: any;
+  renderRightActions?: any;
+  customStyles?: {};
+  IconComponent?: any;
+}
+
+const Touchable = ({
+  title,
+  subTitle,
+  image,
+  onPress,
+  customStyles = {},
+  IconComponent,
+}) => {
   return (
     <TouchableHighlight underlayColor={colors.light} onPress={onPress}>
       <View style={[styles.container, { ...customStyles }]}>
-        <Image style={styles.image} source={image} />
+        {IconComponent}
+        {image && <Image style={styles.image} source={image} />}
         <View style={styles.detailsContainer}>
           <Text style={styles.title}>{title}</Text>
-          <Text style={styles.subTitle}>{subTitle}</Text>
+          {subTitle && <Text style={styles.subTitle}>{subTitle}</Text>}
         </View>
       </View>
     </TouchableHighlight>
@@ -27,9 +45,10 @@ const ListItem = ({
   subTitle,
   image,
   onPress,
-  renderRightActions = undefined,
+  renderRightActions,
   customStyles = {},
-}) => {
+  IconComponent,
+}: ListItemProps) => {
   const touchable = (
     <Touchable
       title={title}
@@ -37,6 +56,7 @@ const ListItem = ({
       image={image}
       onPress={onPress}
       customStyles={customStyles}
+      IconComponent={IconComponent}
     />
   );
   if (!!renderRightActions) {
@@ -59,10 +79,10 @@ const styles = StyleSheet.create({
     width: 70,
     height: 70,
     borderRadius: 35,
-    marginRight: 10,
   },
   detailsContainer: {
     flexDirection: "column",
+    marginLeft: 10,
   },
   title: {
     fontWeight: "500",

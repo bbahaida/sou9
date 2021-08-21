@@ -1,25 +1,25 @@
 import React from "react";
-import { StyleSheet, View, FlatList } from "react-native";
+import { FlatList, StyleSheet } from "react-native";
 import AppCard from "../components/AppCard";
 import Screen from "../components/Screen";
 interface Listing {
   id: number;
   image: any;
   title: string;
-  subTitle: string;
+  price: number;
 }
 const listings: Listing[] = [
   {
     id: 1,
     image: require("../assets/jacket.jpg"),
     title: "Red jacket for sale",
-    subTitle: "$100",
+    price: 100,
   },
   {
     id: 2,
     image: require("../assets/couch.jpg"),
     title: "Couch in great condition",
-    subTitle: "$1000",
+    price: 1000,
   },
 ];
 function ListingsScreen(props) {
@@ -32,7 +32,7 @@ function ListingsScreen(props) {
           <AppCard
             image={item.image}
             title={item.title}
-            subTitle={item.subTitle}
+            subTitle={"$" + item.price}
           />
         )}
       />
