@@ -1,7 +1,6 @@
 import React from "react";
-import { Image, StyleSheet, View, Text } from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
 import ListItem from "../components/ListItem";
-
 import colors from "../config/color";
 
 const ListingDetailsScreen = () => {
@@ -16,6 +15,7 @@ const ListingDetailsScreen = () => {
             image={require("../assets/mosh.jpg")}
             title="Brahim Bahaida"
             subTitle="5 Listing"
+            onPress={() => {}}
           />
         </View>
       </View>

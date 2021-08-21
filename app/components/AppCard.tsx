@@ -17,20 +17,16 @@ const AppCard = ({ title, subTitle, image }) => {
 
 const styles = StyleSheet.create({
   card: {
-    flex: 1,
     paddingHorizontal: 20,
     paddingBottom: 20,
-    paddingTop: 40,
   },
   image: {
-    flex: 3,
+    width: "100%",
+    height: 200,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
-    width: "100%",
-    height: "100%",
   },
   text: {
-    flex: 1,
     backgroundColor: "#fff",
     padding: 15,
     borderBottomLeftRadius: 15,
@@ -38,12 +34,10 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
   },
   title: {
-    flex: 1,
     fontSize: 18,
     fontFamily: "Roboto",
   },
   price: {
-    flex: 1,
     color: colors.secondary,
     fontSize: 17,
     fontFamily: "Roboto",

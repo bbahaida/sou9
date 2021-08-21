@@ -1,12 +1,10 @@
 import React from "react";
-import ListItem from "../components/ListItem";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-import Screen from "../components/Screen";
-
 import { FlatList, StyleSheet } from "react-native";
-import color from "../config/color";
-import ListItemSeparator from "../components/ListItemSeparator";
 import Icon from "../components/Icon";
+import ListItem from "../components/ListItem";
+import ListItemSeparator from "../components/ListItemSeparator";
+import Screen from "../components/Screen";
+import color from "../config/color";
 
 interface Setting {
   icon: string;
