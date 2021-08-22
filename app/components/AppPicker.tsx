@@ -28,7 +28,15 @@ function AppPicker({ icon, items, placeholder, selectedItem, onSelect }) {
               style={styles.icon}
             />
           )}
-          <Text style={[defaultStyles.text, styles.text]}>
+          <Text
+            style={[
+              defaultStyles.text,
+              styles.text,
+              !!selectedItem?.label
+                ? {}
+                : { color: defaultStyles.color.medium },
+            ]}
+          >
             {selectedItem?.label || placeholder}
           </Text>
           <MaterialCommunityIcons

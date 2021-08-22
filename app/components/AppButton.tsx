@@ -1,27 +1,37 @@
 import React, { Children } from "react";
-import { Button, Platform, StyleSheet, Text, View } from "react-native";
+import {
+  Button,
+  Platform,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import defaultStyles from "../config/styles";
 
-const AppButton = ({ name, btnBackground }) => {
+const AppButton = ({ title, style = {}, onPress }) => {
   return (
-    <View style={{ ...styles.button, backgroundColor: btnBackground }}>
-      <Text style={styles.text}>{name}</Text>
-    </View>
+    <TouchableOpacity onPress={onPress}>
+      <View style={[styles.button, style]}>
+        <Text style={[defaultStyles.text, styles.text]}>{title}</Text>
+      </View>
+    </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
   button: {
-    width: "90%",
-    height: 60,
-    borderRadius: 40,
+    width: "100%",
+    height: 55,
+    borderRadius: 25,
     justifyContent: "center",
     alignItems: "center",
     marginBottom: 22,
+    backgroundColor: defaultStyles.color.primary,
   },
   text: {
-    fontSize: 20,
-    fontFamily: Platform.OS === "android" ? "Roboto" : "Avenir",
     color: "#fff",
+    fontWeight: "bold",
     textTransform: "uppercase",
   },
 });

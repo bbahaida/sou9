@@ -7,7 +7,7 @@ import {
   View,
 } from "react-native";
 import Swipeable from "react-native-gesture-handler/Swipeable";
-import colors from "./../config/color";
+import colors from "../../config/color";
 
 export interface ListItemProps {
   title: string;
