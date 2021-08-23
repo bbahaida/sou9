@@ -11,15 +11,25 @@ import {
   TouchableWithoutFeedback,
 } from "react-native";
 import defaultStyles from "../config/styles";
+import CategoryPickerItem from "./CategoryPickerItem";
 import PickerItem from "./PickerItem";
 import Screen from "./Screen";
 
-function AppPicker({ icon, items, placeholder, selectedItem, onSelect }) {
+function AppPicker({
+  icon,
+  items,
+  placeholder,
+  selectedItem,
+  onSelect,
+  width = "100%",
+  numberOfColumns = 1,
+  PickerItemComponent = PickerItem,
+}) {
   const [modalVisible, setModalVisible] = useState(false);
   return (
     <>
       <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
-        <View style={styles.container}>
+        <View style={[styles.container, { width }]}>
           {icon && (
             <MaterialCommunityIcons
               name={icon}
@@ -47,22 +57,21 @@ function AppPicker({ icon, items, placeholder, selectedItem, onSelect }) {
         </View>
       </TouchableWithoutFeedback>
       <Modal visible={modalVisible} animationType="slide">
-        <Screen>
-          <FlatList
-            data={items}
-            keyExtractor={(item) => item.value.toString()}
-            renderItem={({ item }) => (
-              <PickerItem
-                onPress={() => {
-                  setModalVisible(false);
-                  onSelect(item);
-                }}
-                label={item.label}
-              />
-            )}
-          />
-          <Button title="Close" onPress={() => setModalVisible(false)} />
-        </Screen>
+        <FlatList
+          numColumns={numberOfColumns}
+          data={items}
+          keyExtractor={(item) => item.value.toString()}
+          renderItem={({ item }) => (
+            <PickerItemComponent
+              item={item}
+              onPress={() => {
+                setModalVisible(false);
+                onSelect(item);
+              }}
+            />
+          )}
+        />
+        <Button title="Close" onPress={() => setModalVisible(false)} />
       </Modal>
     </>
   );
@@ -73,7 +82,6 @@ const styles = StyleSheet.create({
     backgroundColor: defaultStyles.color.light,
     borderRadius: 25,
     flexDirection: "row",
-    width: "100%",
     padding: 15,
     marginVertical: 10,
   },

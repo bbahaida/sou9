@@ -1,11 +1,14 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 import * as Yup from "yup";
+import CategoryPickerItem from "../components/CategoryPickerItem";
 import AppForm from "../components/forms/AppForm";
 import AppFormField from "../components/forms/AppFormField";
 import AppFormPicker from "../components/forms/AppFormPicker";
 import SubmitButton from "../components/forms/SubmitButton";
 import Screen from "../components/Screen";
+
+import defaultStyles from "../config/styles";
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required().label("Title"),
@@ -18,14 +21,44 @@ const categories = [
   {
     label: "Furniture",
     value: 1,
+    icon: "floor-lamp",
+    color: "#fc5c65",
   },
   {
-    label: "Clothes",
+    label: "Cars",
     value: 2,
+    icon: "car",
+    color: "#fd9644",
   },
   {
     label: "Cameras",
     value: 3,
+    icon: "camera",
+    color: "#fed330",
+  },
+  {
+    label: "Games",
+    value: 4,
+    icon: "cards",
+    color: "#26de81",
+  },
+  {
+    label: "Clothing",
+    value: 5,
+    icon: "shoe-heel",
+    color: "#2bcbba",
+  },
+  {
+    label: "Sports",
+    value: 6,
+    icon: "basketball",
+    color: "#45aaf2",
+  },
+  {
+    label: "Music",
+    value: 7,
+    icon: "headphones",
+    color: "#4b7bec",
   },
 ];
 
@@ -39,6 +72,7 @@ function ListingEditScreen(props) {
       >
         <AppFormField field="title" placeholder="Title" autoCorrect={false} />
         <AppFormField
+          width={120}
           field="price"
           placeholder="Price"
           autoCapitalize="none"
@@ -46,9 +80,12 @@ function ListingEditScreen(props) {
           keyboardType="numeric"
         />
         <AppFormPicker
+          numberOfColumns={3}
+          width={"50%"}
           field="category"
           placeholder="Category"
           items={categories}
+          PickerItemComponent={CategoryPickerItem}
         />
         <AppFormField
           field="description"

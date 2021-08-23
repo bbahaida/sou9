@@ -14,8 +14,10 @@ export interface Message {
 const initialMessages: Message[] = [
   {
     id: 1,
-    title: "T1",
-    description: "D1",
+    title:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus saepe non sapiente quia officia rerum, rem, nulla quod in laborum assumenda aliquam molestiae quidem incidunt suscipit maxime dignissimos veniam cum nisi commodi eum cupiditate repudiandae delectus accusamus. Unde, modi voluptatibus placeat accusantium autem nihil sequi facilis nobis, nemo aliquid eaque mollitia qui. Iste magni laudantium voluptatum ipsum in nobis veritatis corporis vitae cupiditate dolorum inventore asperiores odit ullam eum molestias nostrum qui cumque, consequatur illum, consequuntur illo voluptas. Saepe eum laboriosam vitae sequi veritatis impedit asperiores quibusdam quaerat. Pariatur veritatis consequatur deleniti dolorum optio, beatae accusamus? Veritatis ab commodi harum. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse deserunt libero ipsa, recusandae iusto nihil eius reiciendis laboriosam porro cumque natus soluta rem ea, molestias nostrum consequuntur aliquam fuga fugit!",
+    description:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus saepe non sapiente quia officia rerum, rem, nulla quod in laborum assumenda aliquam molestiae quidem incidunt suscipit maxime dignissimos veniam cum nisi commodi eum cupiditate repudiandae delectus accusamus. Unde, modi voluptatibus placeat accusantium autem nihil sequi facilis nobis, nemo aliquid eaque mollitia qui. Iste magni laudantium voluptatum ipsum in nobis veritatis corporis vitae cupiditate dolorum inventore asperiores odit ullam eum molestias nostrum qui cumque, consequatur illum, consequuntur illo voluptas. Saepe eum laboriosam vitae sequi veritatis impedit asperiores quibusdam quaerat. Pariatur veritatis consequatur deleniti dolorum optio, beatae accusamus? Veritatis ab commodi harum. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse deserunt libero ipsa, recusandae iusto nihil eius reiciendis laboriosam porro cumque natus soluta rem ea, molestias nostrum consequuntur aliquam fuga fugit!",
     image: require("../assets/mosh.jpg"),
   },
   {
