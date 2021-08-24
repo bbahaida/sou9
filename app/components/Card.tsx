@@ -1,9 +1,9 @@
 import React from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 
-import colors from "./../config/color";
+import colors from "../config/color";
 
-const AppCard = ({ title, subTitle, image }) => {
+const Card = ({ title, subTitle, image }) => {
   return (
     <View style={styles.card}>
       <Image style={styles.image} source={image} />
@@ -45,4 +45,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AppCard;
+export default Card;

@@ -1,6 +1,6 @@
 import React from "react";
 import { FlatList, StyleSheet } from "react-native";
-import AppCard from "../components/AppCard";
+import Card from "../components/Card";
 import Screen from "../components/Screen";
 interface Listing {
   id: number;
@@ -29,7 +29,7 @@ function ListingsScreen(props) {
         data={listings}
         keyExtractor={(listing) => listing.id.toString()}
         renderItem={({ item }) => (
-          <AppCard
+          <Card
             image={item.image}
             title={item.title}
             subTitle={"$" + item.price}

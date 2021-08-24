@@ -1,14 +1,12 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
 import React, { useEffect } from "react";
-import { render } from "react-dom";
-import { Alert } from "react-native";
 import {
+  Alert,
   Image,
   StyleSheet,
-  View,
-  TouchableOpacity,
   TouchableWithoutFeedback,
+  View,
 } from "react-native";
 import defaultStyles from "../config/styles";
 
@@ -81,8 +79,8 @@ function ImageInput({ imageUri, onChangeImage }) {
 
 const styles = StyleSheet.create({
   container: {
-    width: 70,
-    height: 70,
+    width: 80,
+    height: 80,
     justifyContent: "center",
     alignItems: "center",
     overflow: "hidden",

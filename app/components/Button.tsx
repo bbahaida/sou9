@@ -1,15 +1,8 @@
-import React, { Children } from "react";
-import {
-  Button,
-  Platform,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import React from "react";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import defaultStyles from "../config/styles";
 
-const AppButton = ({ title, style = {}, onPress }) => {
+const Button = ({ title, style = {}, onPress }) => {
   return (
     <TouchableOpacity onPress={onPress}>
       <View style={[styles.button, style]}>
@@ -36,4 +29,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AppButton;
+export default Button;

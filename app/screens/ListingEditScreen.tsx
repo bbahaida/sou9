@@ -2,19 +2,20 @@ import React from "react";
 import { StyleSheet } from "react-native";
 import * as Yup from "yup";
 import CategoryPickerItem from "../components/CategoryPickerItem";
-import AppForm from "../components/forms/AppForm";
-import AppFormField from "../components/forms/AppFormField";
-import AppFormPicker from "../components/forms/AppFormPicker";
+import Form from "../components/forms/Form";
+import FormField from "../components/forms/FormField";
+import FormImagePicker from "../components/forms/FormImagePicker";
+import FormPicker from "../components/forms/FormPicker";
 import SubmitButton from "../components/forms/SubmitButton";
 import Screen from "../components/Screen";
-
-import defaultStyles from "../config/styles";
+import useLocation from "../hooks/useLocation";
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required().label("Title"),
   price: Yup.number().moreThan(0).lessThan(10000).required().label("Price"),
   category: Yup.object().required().nullable().label("Category"),
   description: Yup.string().optional().label("Description"),
+  images: Yup.array().min(1, "Please select at least 1 images"),
 });
 
 const categories = [
@@ -63,15 +64,24 @@ const categories = [
 ];
 
 function ListingEditScreen(props) {
+  const location = useLocation();
+
   return (
     <Screen customStyles={styles.screen}>
-      <AppForm
-        initialValues={{ title: "", price: 0, category: null, description: "" }}
-        onSubmit={(values) => console.log(values)}
+      <Form
+        initialValues={{
+          title: "",
+          price: 0,
+          category: null,
+          description: "",
+          images: [],
+        }}
+        onSubmit={(values) => console.log({ ...values, location })}
         validationSchema={validationSchema}
       >
-        <AppFormField field="title" placeholder="Title" autoCorrect={false} />
-        <AppFormField
+        <FormImagePicker field="images" />
+        <FormField field="title" placeholder="Title" autoCorrect={false} />
+        <FormField
           width={120}
           field="price"
           placeholder="Price"
@@ -79,7 +89,7 @@ function ListingEditScreen(props) {
           autoCorrect={false}
           keyboardType="numeric"
         />
-        <AppFormPicker
+        <FormPicker
           numberOfColumns={3}
           width={"50%"}
           field="category"
@@ -87,13 +97,13 @@ function ListingEditScreen(props) {
           items={categories}
           PickerItemComponent={CategoryPickerItem}
         />
-        <AppFormField
+        <FormField
           field="description"
           placeholder="Description"
           autoCorrect={false}
         />
         <SubmitButton style={{ marginTop: 10 }} title="Post" />
-      </AppForm>
+      </Form>
     </Screen>
   );
 }

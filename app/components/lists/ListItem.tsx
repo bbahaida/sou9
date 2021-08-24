@@ -1,5 +1,5 @@
-import React from "react";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import React from "react";
 import {
   Image,
   StyleSheet,
@@ -8,9 +8,7 @@ import {
   View,
 } from "react-native";
 import Swipeable from "react-native-gesture-handler/Swipeable";
-
 import defaultStyles from "../../config/styles";
-import { useState } from "react";
 
 export interface ListItemProps {
   title: string;

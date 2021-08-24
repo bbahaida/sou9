@@ -1,21 +1,21 @@
 import { useFormikContext } from "formik";
 import React from "react";
-import AppErrorMessage from "./AppErrorMessage";
-import AppTextInput from "../AppTextInput";
+import ErrorMessage from "./ErrorMessage";
+import TextInput from "../TextInput";
 
-function AppFormField({ field, width, ...otherProps }) {
+function FormField({ field, width, ...otherProps }) {
   const { errors, touched, handleChange, setFieldTouched } = useFormikContext();
   return (
     <>
-      <AppTextInput
+      <TextInput
         onBlur={() => setFieldTouched(field)}
         onChangeText={handleChange(field)}
         width={width}
         {...otherProps}
       />
-      <AppErrorMessage message={errors[field]} visible={touched[field]} />
+      <ErrorMessage message={errors[field]} visible={touched[field]} />
     </>
   );
 }
 
-export default AppFormField;
+export default FormField;

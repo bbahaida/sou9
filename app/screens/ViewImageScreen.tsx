@@ -1,8 +1,6 @@
-import React from "react";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import React from "react";
 import { Image, StyleSheet, View } from "react-native";
-
-import colors from "./../config/color";
 
 const ViewImageScreen = () => {
   return (
